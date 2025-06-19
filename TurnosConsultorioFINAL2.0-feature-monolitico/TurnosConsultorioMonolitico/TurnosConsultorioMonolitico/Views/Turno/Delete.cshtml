@@ -1,0 +1,15 @@
+﻿@model TurnosConsultorioMonolitico.Models.Turno
+
+<h2>¿Estás seguro de que querés eliminar este turno?</h2>
+
+<div>
+    <p><strong>Paciente:</strong> @Model.NombrePaciente</p>
+    <p><strong>Fecha:</strong> @Model.Fecha.ToShortDateString()</p>
+    <p><strong>Hora:</strong> @Model.Hora</p>
+
+    <form asp-action="Delete" method="post">
+        <input type="hidden" asp-for="Id" />
+        <button type="submit" class="btn btn-danger">Eliminar</button>
+        <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>

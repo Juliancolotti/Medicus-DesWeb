@@ -1,0 +1,35 @@
+﻿@model TurnosConsultorioMonolitico.Models.Turno
+
+@{
+    ViewData["Title"] = "Editar Turno";
+    var pacientes = ViewBag.Pacientes as List<TurnosConsultorioMonolitico.Models.Paciente>;
+}
+
+<h2>Editar Turno</h2>
+
+<form asp-action="Edit" method="post">
+    <input type="hidden" asp-for="Id" />
+
+    <div class="form-group">
+        <label asp-for="PacienteId"></label>
+        <select asp-for="PacienteId" class="form-control">
+            @foreach (var paciente in pacientes)
+            {
+                <option value="@paciente.Id">@paciente.Nombre @paciente.Apellido</option>
+            }
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Fecha"></label>
+        <input asp-for="Fecha" class="form-control" type="date" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Hora"></label>
+        <input asp-for="Hora" class="form-control" type="time" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Guardar</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+</form>

@@ -1,0 +1,6 @@
+@TurnosConsultorioAPI_nuevo_HostAddress = http://localhost:5224
+
+GET {{TurnosConsultorioAPI_nuevo_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

@@ -1,0 +1,46 @@
+﻿@model TurnosConsultorioMonolitico.Models.Turno
+
+@{
+    ViewData["Title"] = "Nuevo Turno";
+    var pacientes = ViewBag.Pacientes as List<TurnosConsultorioMonolitico.Models.Paciente>;
+}
+
+<div class="container mt-5">
+    <div class="card shadow rounded">
+        <div class="card-header bg-dark text-white">
+            <h4>Agendar Nuevo Turno</h4>
+        </div>
+        <div class="card-body">
+            <form asp-action="Create" method="post">
+                <div class="mb-3">
+                    <label asp-for="PacienteId" class="form-label">Paciente</label>
+                    <select asp-for="PacienteId" class="form-select" asp-items="@(new SelectList(pacientes, "Id", "Nombre"))">
+                        <option value="">-- Seleccioná un paciente --</option>
+                    </select>
+                    <span asp-validation-for="PacienteId" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Fecha" class="form-label">Fecha</label>
+                    <input asp-for="Fecha" class="form-control" type="date" />
+                    <span asp-validation-for="Fecha" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Hora" class="form-label">Hora</label>
+                    <input asp-for="Hora" class="form-control" type="time" />
+                    <span asp-validation-for="Hora" class="text-danger"></span>
+                </div>
+
+                <button type="submit" class="btn btn-success">Guardar</button>
+                <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
