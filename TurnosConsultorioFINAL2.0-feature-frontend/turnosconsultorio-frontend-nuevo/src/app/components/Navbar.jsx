@@ -16,7 +16,7 @@ export default function Navbar() {
     <nav className="bg-gray-900 text-white shadow-md mb-6">
       <div className="container mx-auto px-6 py-4 flex justify-between items-center">
         <Link href="/" className="text-2xl font-bold text-white">
-          TurnosConsultorio
+          Medicus
         </Link>
 
         <div className="flex gap-4">
