@@ -1,31 +1,26 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using MongoDB.Bson.Serialization.Attributes;
 using MongoDB.Bson;
-using MongoDB.Bson.Serialization.Attributes;
+using System.ComponentModel.DataAnnotations;
 
-namespace TurnosConsultorioAPI_nuevo.Models
+public class Turno
 {
-    public class Turno
-    {
-        [BsonId]
-        [BsonRepresentation(BsonType.ObjectId)]
-        public string Id { get; set; } = string.Empty;
+    [BsonId]
+    [BsonRepresentation(BsonType.ObjectId)]
+    public string Id { get; set; } = string.Empty;
 
-        [BsonElement("PacienteId")]
-        [Required]
-        public string PacienteId { get; set; } = string.Empty;
+    [BsonElement("PacienteId")]
+    [Required]
+    public string PacienteId { get; set; } = string.Empty;
 
-        [BsonElement("Fecha")]
-        [Required]
-        [DataType(DataType.Date)]
-        public DateTime Fecha { get; set; }
+    [BsonElement("Fecha")]
+    [Required]
+    [DataType(DataType.Date)]
+    public DateTime Fecha { get; set; }
 
-        [BsonElement("Hora")]
-        [Required]
-        [DataType(DataType.Time)]
-        public TimeSpan Hora { get; set; }
+    [BsonElement("Hora")]
+    [Required]
+    public string Hora { get; set; } = string.Empty; 
 
-        [BsonElement("Descripcion")]
-        public string? Descripcion { get; set; }
-
-    }
+    [BsonElement("Descripcion")]
+    public string? Descripcion { get; set; }
 }

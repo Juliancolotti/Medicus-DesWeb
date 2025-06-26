@@ -28,9 +28,9 @@ export const obtenerTurno = async (id) => {
 
 export const actualizarTurno = async (id, turno) => {
   await axios.put(`${API_URL}/${id}`, {
-    PacienteId: turno.pacienteId,
-    Fecha: turno.fecha,
-    Hora: turno.hora,
-    Descripcion: turno.descripcion,
+    pacienteId: turno.pacienteId,
+    fecha: turno.fecha,
+    hora: turno.hora,
+    descripcion: turno.descripcion,
   });
 };

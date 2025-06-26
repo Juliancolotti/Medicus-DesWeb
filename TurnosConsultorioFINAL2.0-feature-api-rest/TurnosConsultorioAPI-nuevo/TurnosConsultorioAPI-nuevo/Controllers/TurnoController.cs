@@ -41,9 +41,13 @@ namespace TurnosConsultorioAPI_nuevo.Controllers
             var existing = _service.Get(id);
             if (existing == null) return NotFound();
 
+            turno.Id = id; 
             _service.Update(id, turno);
+
             return NoContent();
         }
+
+
 
         [HttpDelete("{id}")]
         public IActionResult Delete(string id)
