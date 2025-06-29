@@ -6,19 +6,18 @@ export default function Navbar() {
   const pathname = usePathname();
 
   const linkClasses = (path) =>
-    `px-4 py-2 rounded hover:bg-gray-700 transition ${
+    `px-4 py-2 rounded-lg hover:bg-blue-100 hover:text-blue-900 transition font-medium ${
       pathname === path
-        ? "bg-gray-800 text-white font-semibold"
-        : "text-gray-300"
+        ? "bg-blue-200 text-blue-900 shadow"
+        : "text-gray-700"
     }`;
 
   return (
-    <nav className="bg-gray-900 text-white shadow-md mb-6">
-      <div className="container mx-auto px-6 py-4 flex justify-between items-center">
-        <Link href="/" className="text-2xl font-bold text-white">
+    <nav className="bg-white text-gray-900 shadow-md mb-8">
+      <div className="px-6 py-4 flex justify-between items-center">
+        <Link href="/" className="text-2xl font-bold text-blue-700 tracking-tight">
           Medicus
         </Link>
-
         <div className="flex gap-4">
           <Link href="/" className={linkClasses("/")}>
             Inicio
