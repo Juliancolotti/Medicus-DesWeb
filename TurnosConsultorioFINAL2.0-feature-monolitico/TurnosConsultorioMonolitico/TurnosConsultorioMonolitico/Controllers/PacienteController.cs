@@ -37,19 +37,41 @@ namespace TurnosConsultorioMonolitico.Controllers
             return View(paciente);
         }
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-       
-        public IActionResult Edit(string id, Paciente paciente)
+        // GET: Paciente/Edit/5
+        [HttpGet]
+        public IActionResult Edit(string id)
         {
-            if (ModelState.IsValid)
-            {
-                _pacienteService.Update(id, paciente);
-                return RedirectToAction(nameof(Index));
-            }
+            if (string.IsNullOrEmpty(id))
+                return BadRequest();
+
+            var paciente = _pacienteService.Get(id);
+            if (paciente == null)
+                return NotFound();
+
             return View(paciente);
         }
 
+
+
+        // POST: Paciente/Edit
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Edit(Paciente paciente)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(paciente);
+            }
+
+            var existente = _pacienteService.Get(paciente.Id);
+            if (existente == null)
+            {
+                return NotFound();
+            }
+
+            _pacienteService.Update(paciente.Id, paciente);
+            return RedirectToAction(nameof(Index));
+        }
 
 
 
@@ -60,7 +82,6 @@ namespace TurnosConsultorioMonolitico.Controllers
             return View(paciente);
         }
 
-        // 🔁 POST directo sin ActionName → más claro y funcional
         [HttpPost]
         public IActionResult DeletePost(string id)
         {
